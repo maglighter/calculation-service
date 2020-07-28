@@ -1,0 +1,38 @@
+# Tomcat port
+server:
+  port: 8080
+  servlet:
+      context-path: /calculation-service/api/v1/
+
+# actuator
+management:
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    jmx:
+      exposure:
+        include: metrics
+  server:
+    port: 8081
+
+
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          filter:
+            CommonsRequestLoggingFilter: DEBUG
+          client:
+            RestTemplate: DEBUG
+          servlet:
+            mvc:
+              method:
+                annotation:
+                  HttpEntityMethodProcessor: DEBUG
