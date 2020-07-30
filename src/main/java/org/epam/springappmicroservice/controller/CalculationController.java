@@ -21,7 +21,7 @@ public class CalculationController {
     @GetMapping("/logarithm")
     @ApiOperation(value = "Calculate logarithm by providing number and base (optional)")
     public CalculationResponse calculate(@RequestParam(value = "number") Double num,
-                                                         @RequestParam(value = "base", required = false, defaultValue = "2") Double base) {
+                                         @RequestParam(value = "base", required = false, defaultValue = "2") Double base) {
         log.info("calculating logarithm of {} and base {}", num, base);
         Double result = calculationService.logarithm(num, base);
         return CalculationResponse.builder()
