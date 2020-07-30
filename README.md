@@ -3,7 +3,7 @@
 ```
 mvn package
 
-docker run  -p 24224:24224 -p 24224:24224/udp -v ./fluentd:/fluentd/etc -e FLUENTD_CONF=fluentd.conf fluent/fluentd:v1.6-debian-1
+docker run  -p 24224:24224 -p 24224:24224/udp -v $(pwd)/fluentd:/fluentd/etc -e FLUENTD_CONF=fluentd.conf fluent/fluentd:v1.6-debian-1
 
 docker run -p 8080:8080 -p 8081:8081 -p 8082:8082 --log-driver fluentd --log-opt fluentd-address=localhost:24224 --log-opt tag=docker -t spring-app-microservice:0.0.1-SNAPSHOT
 ```
